@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta content="no-siteapp" http-equiv="Cache-Control" />
+		<title>墨墨社区 - 安卓和IOS苹果APP里致力于下单便捷化一站式程序</title>
+		<meta name="description" content="墨墨社区APP是致力于下单便捷化一站式程序" />
+		<meta name="keywords" content="墨墨社区APP,墨墨社区自助下单APP,墨墨社区在线商城APP" />
+		<link rel="stylesheet" href="./static/css/default.min.css" />
+		<link rel="stylesheet" href="./static/css/main.css" />
+	</head>
+	<body class="frame_wrap">
+		<div class="intro_banner">
+			<div class="intro_banner_info">
+				<div class="intro_banner_info_inner">
+					<div class="qw_icon qw_icon_BannerLogo"></div>
+					<div class="qw_icon qw_icon_BannerMobileLogo"></div>
+					<div class="intro_banner_info_title"></div>
+					<div class="intro_banner_info_downloadBtnWrap">
+						<a id="downloadInMobile"
+							class="intro_banner_info_downloadBtn intro_banner_info_downloadBtn_ForMobile"
+							href="javascript:openAppUrl();">
+							<span class="qw_icon qw_icon_AppStore"></span>IOS下载
+						</a>
+						<a id="downIos" class="intro_banner_info_downloadBtn intro_banner_info_downloadBtn_ForDesktop"
+							href="javascript:openAppUrl();">
+							<span class="intro_banner_info_downloadBtn_origin">
+								<span class="qw_icon qw_icon_AppStore"></span>IOS下载
+							</span>
+							<div class="intro_banner_info_downloadBtn_qrCodeWrap">
+								<div
+									class="intro_banner_info_downloadBtn_qrCode intro_banner_info_downloadBtn_qrCode_IOS">
+								</div>
+								<div class="intro_banner_info_downloadBtn_qrCodeText">扫描二维码下载</div>
+							</div>
+						</a>
+					</div>
+					<a id="btn_bug" class="intro_banner_info_downloadBtn intro_banner_info_githubBtn"
+						href="https://wwb.lanzoul.com/iokpB02urokj">
+						<span class="intro_banner_info_downloadBtn_origin">
+							<span class="qw_icon qw_icon_Andr"></span>安卓下载
+						</span>
+					</a>
+
+					<div class="intro_banner_info_version" id="app_version_info"></div>
+					<div class="intro_banner_info_version">最后更新: <span id="date"></span></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="intro_cnt">
+
+			<div class="intro_cnt_inside">
+
+				<div class="intro_cnt_ability intro_column">
+
+					<div class="intro_cnt_ability_list">
+
+						<div class="intro_ability_item">
+							<div class="qw_icon qw_icon_GlobalConfig"></div>
+							<div class="intro_ability_item_title">更多丰富UI</div>
+							<div class="intro_ability_item_cnt">安卓和苹果IOS双更新，精心打磨界面每一处细节，从后台的演算到用户手中的绽放，每一幕都是精彩的演绎。</div>
+						</div>
+
+						<div class="intro_ability_item">
+							<div class="qw_icon qw_icon_Extension"></div>
+							<div class="intro_ability_item_title">数据多层加密</div>
+							<div class="intro_ability_item_cnt">在全新版本上，我们更加注重数据的安全性，对涉及到的隐私数据只加密存至本地不上传云端，让盗窃者无处可盗。
+							</div>
+						</div>
+
+						<div class="intro_ability_item">
+							<div class="qw_icon qw_icon_Component"></div>
+							<div class="intro_ability_item_title">多元模块化</div>
+							<div class="intro_ability_item_cnt">对每个功能全新的从0设计，从安全，美观，快捷三个因素综合出发，让每个模块以最完美的形态展现。</div>
+
+						</div>
+
+						<div class="intro_ability_item">
+							<div class="qw_icon qw_icon_Tool"></div>
+							<div class="intro_ability_item_title">高效的工具</div>
+							<div class="intro_ability_item_cnt">更多独家工具类的功能出现，对用户数据进行大量纵向计算给用户呈现出完美的预先分析。</div>
+						</div>
+
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+
+		<div class="intro_foot">
+			<div> Developed by <a class="qui_txtBold"></a>
+			</div>
+		</div>
+
+		<div class="intro_weChatTip" id="browserTip">
+			<div class="qui_mask qw_mask" id="browserTipMask"></div>
+			<span class="qw_icon qw_icon_ShareArrow"></span>
+			<div class="intro_weChatTip_cnt">
+				点击右上角<br />
+				选择“在 Safari 中打开”
+			</div>
+		</div>
+
+		<div class="intro_weChatTip" id="androidBrowserTip">
+			<div class="qui_mask qw_mask"></div>
+			<span class="qw_icon qw_icon_ShareArrow"></span>
+			<div class="intro_weChatTip_cnt">
+				点击右上角<br />
+				选择“在 浏览器 中打开” 或 “浏览器”
+			</div>
+		</div>
+
+		<script src="./static/js/jquery.min.js"></script>
+		<script src="./static/js/layer/layer.js"></script>
+		<script src="./static/js/jr-qrcode.js"></script>
+		<script>
+			var app_name = "墨墨社区";
+			var app_version = 2,
+				app_version_name = "1.1";
+			var app_date = "2022-04-08 19:58:40";
+			var app_android_url = "./static/download/android.apk";
+			var app_ios_url = "./static/download/ios.mobileconfig";
+			var app_ios_embedded_url = "./static/download/embedded.mobileprovision";
+			var app_icon = "data:image/jpeg;base64,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";
+			$(".qw_icon_BannerLogo").css("background-size", "cover");
+			$(".qw_icon_BannerMobileLogo").css("background-size", "cover");
+			$(".qw_icon_BannerLogo").css("background-repeat", "no-repeat");
+			$(".qw_icon_BannerMobileLogo").css("background-repeat", "no-repeat");
+			$(".qw_icon_BannerLogo").css("background-image", "url(" + app_icon + ")");
+			$(".qw_icon_BannerMobileLogo").css("background-image", "url(" + app_icon + ")");
+			$(".intro_banner_info_title").html(app_name);
+			$("#app_version_info").html("V" + app_version_name + " (Build " + app_version + ") - 7.30 MB");
+			$("#date").html(app_date);
+			$(".qui_txtBold").html(app_name + "APP");
+			var base64_img = jrQrcode.getQrBase64(window.location.href);
+			$(".intro_banner_info_downloadBtn_qrCode_IOS").css("background-image", "url(" + base64_img + ")");
+			
+			var browser = {
+				versions: function() {
+					var u = navigator.userAgent,
+						app = navigator.appVersion;
+					return { //移动终端浏览器版本信息
+						trident: u.indexOf('Trident') > -1, //IE内核
+						presto: u.indexOf('Presto') > -1, //opera内核
+						webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+						gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+						mobile: !!u.match(/AppleWebKit.*Mobile/i) || !!u.match(
+							/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/
+						), //是否为移动终端
+						ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+						android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+						iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+						iPad: u.indexOf('iPad') > -1, //是否iPad
+						webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+					};
+				}(),
+				language: (navigator.browserLanguage || navigator.language).toLowerCase()
+			}
+
+			function isSafari() {
+				return /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent) && !/MQQBrowser/.test(navigator
+					.userAgent);
+			}
+
+			function IsPC() {
+				var userAgentInfo = navigator.userAgent;
+				var Agents = ["Android", "iPhone",
+					"SymbianOS", "Windows Phone",
+					"iPad", "iPod"
+				];
+				var flag = true;
+				for (var v = 0; v < Agents.length; v++) {
+					if (userAgentInfo.indexOf(Agents[v]) > 0) {
+						flag = false;
+						break;
+					}
+				}
+				return flag;
+			}
+
+			function is_weixn_qq() {
+				var ua = navigator.userAgent.toLowerCase();
+				if (ua.match(/MicroMessenger\/[0-9]/i)) {
+					return "weixin";
+				}
+				if (ua.match(/QQ\/[0-9]/i)) {
+					return "QQ";
+				}
+				return false;
+			}
+
+			function openAppUrl() {
+				if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+					if (isSafari()) {
+						window.location.href = app_ios_url;
+						setTimeout(function() {
+							layer.open({
+								title: '提示',
+								content: '是否前往安装？<br>如无法跳转且提示"描述文件损坏"，请手动前往"设置"->"通用"->"描述文件"->"安装"',
+								btn: ['前往', '取消'],
+								btnAlign: 'c',
+								skin: 'layui-layer-molv',
+								yes: function(index, layero) {
+									layer.close(index);
+									location.href = app_ios_embedded_url;
+								}
+							});
+						}, 1500)
+					} else {
+						if (is_weixn_qq()) {
+							document.getElementById("browserTip").style.display = "block";
+						}
+						layer.msg('请用IOS系统自带浏览器[Safari]打开本页面');
+					}
+				}
+				return;
+			}
+
+			function android_download() {
+				if (!IsPC()) {
+					if (is_weixn_qq()) {
+						document.getElementById("androidBrowserTip").style.display = "block";
+					} else {
+						window.location.href = app_android_url;
+					}
+				} else {
+					window.location.href = app_android_url;
+				}
+			}
+		</script>
+	</body>
+</html>
